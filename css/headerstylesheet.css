@@ -1,0 +1,157 @@
+/* HEADER STYLE */
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+header nav a {
+  /* margin-right: 15px; */
+  margin: 0 15px; /* THE ALTERED RULE TO APPLY THE MARGIN TO THE ANCHORS' LEFT + RIGHT */
+  font-family: 'Lexend', sans-serif;
+  font-weight: light;
+  font-size: 12px;
+}
+h1 {
+  font-family: 'Bungee', sans-serif;
+}
+
+/*
+=Navigation › Large Screen
+============================================= */
+header {
+  /* height: auto; ---------THIS RULE IS REDUNDANT AS THE BROWSER DEFAULT IS AUTO */
+  /* width: auto; ---------THIS RULE IS REDUNDANT AS THE BROWSER DEFAULT IS AUTO */
+  /* text-decoration: none; ---------THIS RULE APPLYS THE ANCHOR ELEMENTS ONLY */
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+h1 a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: black;
+}
+li {
+  list-style: none;
+}
+.mainnav label,
+.mainnav input {
+  display: none;
+}
+.menu {
+  display: flex;
+  /* flex-direction: row; ---------THIS RULE ISN'T NEEDED SINCE THE DEFAULT VALUE IS ROW */
+  /* justify-content: space-between; */
+}
+
+/* THIS RULE APPLIES THE LEFT MARGIN TO EVERY LIST ITEM THAT IS A CHILD OF THE MENU */
+/* .menu li {
+  margin-left: 40px;
+} */
+/* THIS RULE APPLIES THE LEFT MARGIN TO THE IMMEDIATE CHILDREN OF THE MENU */
+.menu > li {
+  margin-left: 30px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+  display: block;
+
+  font: 500 15px 'Roboto Mono', monospace; /* HERE'S THE SHORTHAND VERSION */
+  /* font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 15px; */
+}
+.submenu {
+  /* text-decoration: none; ---------REDUNDANT RULE */
+  color: black;
+  position: absolute;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.35s linear;
+}
+.submenu a {
+  font-size: 12px;
+  padding-top: 4px;
+  /* margin-left: -40px; ---------YOU DON'T NEED THIS RULE WITH THE ADJUSTMENT TO THE RULE ON LINE 56  */
+  /* font-weight: 400; ---------THIS RULE IS REDUNDANT SINCE THE BROWSER DEFAULT IS 400 */
+}
+.checkbox,
+.navicon {
+  position: fixed;
+  left: 20px;
+  height: 26px;
+  width: 26px;
+  background-color: black;
+  display: inline-block;
+  border-radius: 50%;
+}
+.checkbox {
+  opacity:100%;
+  z-index: 22;
+}
+.navicon {
+  z-index: 11;
+}
+.navicon {
+  position: relative;
+  margin-right: 20px;
+}
+
+li:hover .submenu {
+  background-color: transparent;
+  max-height: 100%;
+}
+.submenu a {
+  color: transparent;
+  transition: 0.35s linear;
+}
+li:hover .submenu a {
+  color: black;
+}
+/*
+=Navigation › Small Screen
+============================================= */
+@media (max-width: 640px) {
+  .mainnav label {
+    display: block; /* will brings it back also */
+    position: relative;
+    z-index: 99;
+  }
+  .menu {
+    background-color: bisque;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    margin-top: -50vh;
+    flex-direction: row;
+    /* transition: 0.35s linear; */
+  }
+  .menu a {
+    color: transparent;
+    transition: 0.35s linear;
+  }
+  .mainnav input:checked + .menu {
+    background-color: #e2d4c4;
+    margin: 0;
+  }
+  .mainnav input:checked + .menu a {
+    color: black;
+  }
+
+  .menu > li:first-child {
+    /* margin-top: 4rem; ---------YOU DON'T NEED THIS RULE--DELETE THIS RULE SET */
+  }
+  .mainnav > ul {
+    padding-top: 4rem; /* USE THIS RULE INSTEAD */
+  }
+
+  .submenu {
+    display: none;
+  }
+}
